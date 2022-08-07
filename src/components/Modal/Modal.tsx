@@ -1,29 +1,34 @@
-import { AiOutlineClose } from "react-icons/ai";
 import { loginType } from "../../util/reducer/loginReducer";
-import { ModalWrap, ModalView, ModalTitle, Icon } from "./Modal.style";
+import { ModalWrap, ModalView, ModalTitle, CloseIcon } from "./Modal.style";
 import React from "react";
+import { modalStateHandler } from "../../util/modal/modal.utils";
 const Modal = ({
     modalRef,
-    setIsLogin,
+    modalWrapRef,
+    children,
 }: {
     modalRef: React.RefObject<HTMLDivElement>;
-    setIsLogin: (action: { type: loginType }) => void;
+    modalWrapRef: React.RefObject<HTMLDivElement>;
+    children: React.ReactElement;
 }) => {
     const handlerClose = () => {
-        // modalRef.current.style.display = "none";
+        modalStateHandler(modalRef, modalWrapRef, "close");
     };
     return (
-        <ModalWrap ref={modalRef}>
-            <ModalView>
+        <>
+            <ModalWrap ref={modalWrapRef}></ModalWrap>
+            <ModalView ref={modalRef}>
                 <ModalTitle>
-                    <Icon>
-                        <AiOutlineClose size={30} onClick={handlerClose} />
-                    </Icon>
+                    <CloseIcon size={20} onClick={handlerClose} />
                 </ModalTitle>
-                <input type="text"></input>
+                <ModalBody>{children}</ModalBody>
             </ModalView>
-        </ModalWrap>
+        </>
     );
+};
+
+const ModalBody = ({ children }: { children: React.ReactElement }) => {
+    return <div style={{ height: "calc(100% - 30px)" }}>{children}</div>;
 };
 
 export default Modal;

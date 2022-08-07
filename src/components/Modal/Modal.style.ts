@@ -1,13 +1,14 @@
 import styled from "styled-components";
+import { AiOutlineClose } from "react-icons/ai";
 
 export const ModalWrap = styled.div`
     width: 100%;
     height: 100%;
+    top: 0;
     background-color: black;
     opacity: 0.5;
     z-index: 9999;
     position: absolute;
-    top: 0px;
     transition-duration: 300ms;
     transition-timing-function: cubic-bezier(0.83, 0.34, 1, 1);
     display: none;
@@ -16,22 +17,27 @@ export const ModalWrap = styled.div`
 `;
 
 export const ModalView = styled.div`
-    width: 600px;
-    height: 600px;
-    display: block;
-    transition-delay: 300ms;
+    width: 400px;
+    height: 550px;
+    opacity: 0;
     background: white;
+    position: absolute;
+    top: 50%;
+    z-index: 9999;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.15s linear;
+    border-radius: 15px;
 `;
 
 export const ModalTitle = styled.div`
     width: 100%;
     height: 30px;
-    background-color: lightgray;
-    border-bottom: 1px solid black;
     position: relative;
+    box-sizing: border-box;
 `;
 
-export const Icon = styled.div`
+export const CloseIcon = styled(AiOutlineClose)`
     height: 100%;
     position: absolute;
     right: 5px;

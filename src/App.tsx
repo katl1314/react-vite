@@ -1,90 +1,56 @@
-import {
-    useContext,
-    useReducer,
-    useRef,
-    createContext,
-    memo,
-    MutableRefObject,
-} from "react";
-import styled from "styled-components";
-import { loginReducer } from "./util/reducer";
-import Header from "./layout/Header/Header";
-import Navigator from "./layout/Navigator/Navigator";
-import Content from "./layout/Content";
-import Modal from "./components/Modal";
+import { useRef, createContext, useState } from "react";
+import ModalPortal from "./portal/Portal";
 import { ILogin } from "./App.interface";
+// layout
+import Header from "./layout/Header";
+import Content from "./layout/Content";
+import Navigator from "./layout/Navigator";
+// components
+import Modal from "./components/Modal";
+import Gnb from "./components/Gnb";
+import Logo from "./components/Logo";
+import LoginForm from "./components/LoginForm";
+
 import "./App.css";
 
-export const MyContext = createContext<ILogin>({
+const defaultLoginState = {
     isLogin: false,
-});
+};
+
+export const MyContext = createContext<ILogin>(defaultLoginState);
 
 function App() {
-    const [isLogin, dispatch] = useReducer(loginReducer, {
-        isLogin: false,
-    });
     const modalRef = useRef<HTMLDivElement>(null);
+    const modalWrapRef = useRef<HTMLDivElement>(null);
+    const [isLogin, setIsLogin] = useState(false);
+
     return (
-        <MyContext.Provider value={isLogin}>
+        <MyContext.Provider value={{ isLogin }}>
             <Header>
                 <Logo />
-                <SubMenu modalRef={modalRef} />
+                <Gnb
+                    modalRef={modalRef}
+                    modalWrapRef={modalWrapRef}
+                    setIsLogin={setIsLogin}
+                />
             </Header>
             <Navigator />
             <Content />
-            <Modal modalRef={modalRef} setIsLogin={dispatch} />
+            <ModalPortal>
+                <Modal
+                    modalRef={modalRef}
+                    modalWrapRef={modalWrapRef}
+                    children={
+                        <LoginForm
+                            modalRef={modalRef}
+                            modalWrapRef={modalWrapRef}
+                            setIsLogin={setIsLogin}
+                        />
+                    }
+                />
+            </ModalPortal>
         </MyContext.Provider>
     );
 }
-
-const Logo = memo(() => {
-    return <H1>Logo</H1>;
-});
-
-const SubMenu = ({ modalRef }: { modalRef: any }) => {
-    const myContext = useContext(MyContext);
-    const { isLogin } = myContext;
-    const handlerLogin = () => {
-        if (!isLogin) {
-            modalRef.current.style.display = "flex";
-        }
-    };
-
-    return (
-        <SubMenuContent>
-            <Button onClick={handlerLogin}>로그인</Button>
-        </SubMenuContent>
-    );
-};
-
-const H1 = styled.h1`
-    font-size: 25px; // 폰트
-    height: 70px; // 높이
-    font-weight: 600; // bold 굵기
-    line-height: 70px; // 줄 높이
-    color: #fff; // 색상
-`;
-
-const SubMenuContent = styled.div`
-    display: flex;
-    justify-content: space-around;
-`;
-
-const Button = styled.button`
-    background: transparent; // 배경은 투명색
-    color: white; // 글꼴 색상은 흰색
-    border: 1px solid white; // 테두리 흰색
-    margin: 5px; // 마진 5px
-    cursor: pointer;
-    // 트랜지션 (효과)
-    transition-timing-function: ease-in;
-    transition-duration: 0.5s;
-    height: 35px;
-    width: 85px;
-    &:hover {
-        background-color: white;
-        color: black;
-    }
-`;
 
 export default App;

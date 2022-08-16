@@ -1,18 +1,20 @@
-import React, { Fragment } from "react";
 import { Background, TitleContent } from "./Header.style";
-import { IHeader } from "./Header.interface";
+import { IReactNode } from "../../App.interface";
+import { useContext } from "react";
+import { MyContext } from "../../App";
 
-const Header = ({ children }: IHeader) => {
+const Header = ({ children }: IReactNode) => {
+    const { isSlide } = useContext(MyContext);
     return (
         <>
-            <Background>
+            <Background isSlide={isSlide}>
                 <HeaderContent>{children}</HeaderContent>
             </Background>
         </>
     );
 };
 
-const HeaderContent = ({ children }: IHeader) => {
+const HeaderContent = ({ children }: IReactNode) => {
     return <TitleContent>{children}</TitleContent>;
 };
 

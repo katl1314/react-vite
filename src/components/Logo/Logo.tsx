@@ -3,7 +3,7 @@ import { H1 } from "./Logo.style";
 const Logo = React.memo(() => {
     return (
         <H1>
-            <a href="/">Blog</a>
+            <a href="/">Your Github</a>
         </H1>
     );
 });

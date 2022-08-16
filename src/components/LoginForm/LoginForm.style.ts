@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { LabelPropsType } from "../Label/label.type";
 
 export const Form = styled.div`
     width: 80%;
@@ -12,7 +13,14 @@ export const Input = styled.input`
     box-sizing: border-box;
 `;
 
-export const Label = styled.p``;
+export const Label = styled.div`
+    font-size: ${(props: LabelPropsType) =>
+        props.type === "info" ? "14px" : "12px"};
+    font-weight: bold;
+    color: ${(props: LabelPropsType) =>
+        props.type === "info" ? "#000" : "#f00"};
+    margin: 0.2rem 0px;
+`;
 
 export const Button = styled.button`
     width: 100%;

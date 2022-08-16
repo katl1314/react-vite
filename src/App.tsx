@@ -1,4 +1,4 @@
-import React, { useRef, createContext, useState, useContext } from "react";
+import { useRef, createContext, useState, useContext } from "react";
 import ModalPortal from "./portal/Portal";
 import { ILogin, IReactNode } from "./App.interface";
 // layout

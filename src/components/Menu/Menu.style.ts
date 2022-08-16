@@ -9,10 +9,11 @@ export const Link = styled(NavLink)`
 `;
 
 export const MenuItem = styled.div`
-    padding: 17px;
+    padding: 15px;
     display: flex;
     & svg + div {
         margin-left: 10px;
+        line-height: 20px;
     }
 
     & .active {

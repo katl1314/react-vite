@@ -73,8 +73,9 @@ const ContentWrap = styled.div`
     transition: 0.5s;
     display: flex;
     position: relative;
+    height: 100%;
     width: ${({ isSlide }: { isSlide: boolean }) =>
-        isSlide ? "calc(100% - 250px)" : "calc(100% - 50px)"};
+        isSlide ? "calc(100% + 250px)" : "calc(100% + 50px)"};
 `;
 
 export default App;

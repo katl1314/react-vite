@@ -38,10 +38,11 @@ const NavigatorWrap = styled.nav`
         isSlide ? "250px" : "50px"};
     overflow: hidden;
     position: absolute;
-    top: 0;
+    /* top: 0; */
     background-color: white;
     border-right: 1px solid #efefef;
     transition: 0.5s;
+    z-index: 9999;
     & .guide-menu {
         height: 50px;
         display: flex;

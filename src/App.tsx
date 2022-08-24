@@ -1,6 +1,6 @@
-import { useRef, createContext, useState, useContext } from "react";
+import { useRef, createContext, useState, useContext, useEffect } from "react";
 import ModalPortal from "./portal/Portal";
-import { ILogin, IReactNode } from "./App.interface";
+import { IApp, IReactNode } from "./App.interface";
 // layout
 import Header from "./layout/Header";
 import Navigator from "./layout/Navigator";
@@ -15,13 +15,18 @@ import "./App.css";
 import styled from "styled-components";
 import Main from "./layout/Main";
 
+import { useQuery } from "react-query";
+import { getProduct } from "./util/async/AsyncProduct";
+import { IProduct } from "./Page/interface/Product.interface";
+import useProduct from "./Hook/useProduct";
+
 const defaultLoginData = {
-    isLogin: true,
+    isLogin: false,
     id: "",
     password: "",
 };
 
-export const MyContext = createContext<ILogin>({
+export const MyContext = createContext<IApp>({
     ...defaultLoginData,
     isSlide: true,
 });
@@ -30,14 +35,15 @@ function App() {
     const modalRef = useRef<HTMLDivElement>(null);
     const modalWrapRef = useRef<HTMLDivElement>(null);
     const [loginData, setLoginData] = useState(defaultLoginData);
-    const [isSlide, setSlide] = useState(true);
+    const [isSlide, setSlide] = useState(defaultLoginData.isLogin);
+
     return (
         <MyContext.Provider value={{ ...loginData, isSlide: isSlide }}>
             <Header>
                 <Logo />
             </Header>
-            <Navigator setSlide={setSlide} />
             <Content>
+                <Navigator setSlide={setSlide} />
                 <Main />
             </Content>
             <Footer />
@@ -64,12 +70,11 @@ const Content = ({ children }: IReactNode) => {
 };
 
 const ContentWrap = styled.div`
-    height: calc(100% - 50px);
     transition: 0.5s;
+    display: flex;
+    position: relative;
     width: ${({ isSlide }: { isSlide: boolean }) =>
         isSlide ? "calc(100% - 250px)" : "calc(100% - 50px)"};
-    margin-left: ${({ isSlide }: { isSlide: boolean }) =>
-        isSlide ? "250px" : "50px"};
 `;
 
 export default App;

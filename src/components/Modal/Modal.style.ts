@@ -20,6 +20,7 @@ export const ModalView = styled.div`
     width: 20rem;
     height: 550px;
     opacity: 0;
+    display: none;
     background: white;
     position: absolute;
     top: 50%;

@@ -1,0 +1,28 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "name": "포카칩2",
+            "type": "감자칩",
+            "price": 1100,
+            "stock": 100,
+            "image": "./images/포카칩(오리지널).jfif"
+        },
+        {
+            "id": 2,
+            "name": "스윙칩",
+            "type": "감자칩",
+            "price": 1100,
+            "stock": 100,
+            "image": "./images/스윙칩.jfif"
+        },
+        {
+            "id": 3,
+            "name": "다이제",
+            "type": "비스킷",
+            "price": 1100,
+            "stock": 100,
+            "image": "./images/다이제.jfif"
+        }
+    ]
+}

@@ -11,25 +11,25 @@ const Menu = () => {
             <MenuItem>
                 <Link to="/">
                     <AiOutlineHome size={20} />
-                    {isSlide && <div>전체보기</div>}
+                    {isSlide && <div>홈</div>}
                 </Link>
             </MenuItem>
             <MenuItem>
                 <Link to="/page2">
                     <BsTwitch size={20} />
-                    {isSlide && <div>인기상품</div>}
+                    {isSlide && <div>상품재고관리</div>}
                 </Link>
             </MenuItem>
             <MenuItem>
                 <Link to="/page3">
-                    <AiOutlineYoutube size={20} />
-                    {isSlide && <div>신상품</div>}
+                    <BiWon size={20} />
+                    {isSlide && <div>매출액관리</div>}
                 </Link>
             </MenuItem>
             <MenuItem>
                 <Link to="/page4">
-                    <BiWon size={20} />
-                    {isSlide && <div>추천상품</div>}
+                    <AiOutlineYoutube size={20} />
+                    {isSlide && <div>인력관리</div>}
                 </Link>
             </MenuItem>
         </MenuContainer>

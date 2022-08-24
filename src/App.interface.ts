@@ -1,4 +1,4 @@
-export interface ILogin {
+export interface IApp {
     isLogin: boolean;
     id: string;
     password: string;

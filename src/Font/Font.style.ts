@@ -11,3 +11,15 @@ export const H1 = styled.h1`
         text-decoration: none;
     }
 `;
+
+export const H2 = styled.h2`
+    font-size: 18px; // 폰트
+    height: 45px; // 높이
+    font-weight: 600; // bold 굵기
+    line-height: 45px; // 줄 높이
+    font-family: "Happiness-Sans-Title";
+    & > a {
+        color: #fff; // 색상
+        text-decoration: none;
+    }
+`;

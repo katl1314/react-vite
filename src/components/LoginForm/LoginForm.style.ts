@@ -1,5 +1,8 @@
 import styled from "styled-components";
-import { LabelPropsType } from "../Label/label.type";
+
+interface LabelPropsType {
+    type: "info" | "warn";
+}
 
 export const Form = styled.div`
     width: 80%;

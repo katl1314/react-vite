@@ -15,10 +15,10 @@ export interface ICustomerInfo {
     age: number;
 }
 
-export interface ICustomer {
-    info: ICustomerInfo | ICustomerInfo[];
-}
-
 export interface ICustomerItem {
     customer: NonNullable<ICustomerInfo>;
+}
+
+export interface ICustomer {
+    info: ICustomerInfo;
 }

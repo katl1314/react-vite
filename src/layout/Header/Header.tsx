@@ -1,18 +1,8 @@
-import { Background, TitleContent } from "./Header.style";
-import { IReactNode } from "../../App.interface";
-
-const Header = ({ children }: IReactNode) => {
+const Header = () => {
     return (
-        <>
-            <Background>
-                <HeaderContent>{children}</HeaderContent>
-            </Background>
-        </>
+        <div>Header</div>
     );
 };
 
-const HeaderContent = ({ children }: IReactNode) => {
-    return <TitleContent>{children}</TitleContent>;
-};
 
 export default Header;

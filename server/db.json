@@ -1,28 +1,40 @@
 {
-    "products": [
+    "customer": [
         {
             "id": 1,
-            "name": "포카칩2",
-            "type": "감자칩",
-            "price": 1100,
-            "stock": 100,
-            "image": "./images/포카칩(오리지널).jfif"
+            "image": "https://placeimg.com/64/64/1",
+            "name": "홍길동",
+            "number": 970530,
+            "gender": "male",
+            "age": 26,
+            "job": "프로그래머"
         },
         {
             "id": 2,
-            "name": "스윙칩",
-            "type": "감자칩",
-            "price": 1100,
-            "stock": 100,
-            "image": "./images/스윙칩.jfif"
+            "image": "https://placeimg.com/64/64/2",
+            "name": "최민혁3",
+            "number": 970530,
+            "gender": "male",
+            "age": 26,
+            "job": "프로그래머"
         },
         {
             "id": 3,
-            "name": "다이제",
-            "type": "비스킷",
-            "price": 1100,
-            "stock": 100,
-            "image": "./images/다이제.jfif"
+            "image": "https://placeimg.com/64/64/3",
+            "name": "임꺽정",
+            "number": 970530,
+            "gender": "male",
+            "age": 26,
+            "job": "프로그래머"
+        },
+        {
+            "id": 4,
+            "image": "https://placeimg.com/64/64/4",
+            "name": "대관령",
+            "number": 970530,
+            "gender": "male",
+            "age": 26,
+            "job": "프로그래머"
         }
     ]
 }

@@ -6,7 +6,11 @@ import TableCell from "@material-ui/core/TableCell";
 import { Gender, ICustomer } from "../../Interface/interface";
 import styled from "styled-components";
 
-const Customer = ({ info }: ICustomer) => {
+// 인터페이스 상속
+interface ICustomerHandler extends ICustomer {
+    handlerDelete: (id: number) => void;
+}
+const Customer = ({ info, handlerDelete }: ICustomerHandler) => {
     return (
         <CustomTableRow>
             <TableCell>{info.id}</TableCell>
@@ -17,6 +21,9 @@ const Customer = ({ info }: ICustomer) => {
             <TableCell>{info.number}</TableCell>
             <TableCell>{Gender[info.gender]}</TableCell>
             <TableCell>{info.job}</TableCell>
+            <TableCell>
+                <button onClick={() => handlerDelete(info.id)}>삭제</button>
+            </TableCell>
         </CustomTableRow>
     );
 };
@@ -33,6 +40,5 @@ const CustomTableRow = styled(TableRow)`
     }
 `;
 
-
 // 컴포넌트 내보내기
-export default Customer;
+export default React.memo(Customer);

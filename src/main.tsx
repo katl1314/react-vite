@@ -10,7 +10,6 @@ import { QueryClient, QueryClientProvider } from "react-query";
 const myQueryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <React.StrictMode>
-        {/* react-query 사용시 최상위 컴포넌트에 QueryClientProvider를 사용한다. */}
         <QueryClientProvider client={myQueryClient}>
             <BrowserRouter>
                 <Reset />
